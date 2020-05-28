@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Javascript code -->
+
+    <script>
+        function validate() {
+            var username = document.getElementById("uname").value;
+            var password = document.getElementById("pass").value;
+
+            if (username.trim() == "" || password.trim() == "") {
+                alert("Field should not be empty");
+                return false;
+            }
+
+            if (username == "admin" && password == "admin") {
+                return true;
+            }
+
+            else {
+                alert("username or password is incorrect");
+                return false;
+            }
+        }
+    </script>
+
+</head>
+
+<body><br><br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 offset-lg-4 offset-md-4" style="background-color: rgb(119, 231, 184);">
+                <form onsubmit="return validate()" action="dashboard.html">
+                    <div class="form-group my-4">
+                        <!-- <h2 style="text-align: center;">Login</h2><br> -->
+                        <img style="padding-left: 60px;" src="logo.jpg" alt="Login logo"><br><br>
+                        <input type="text" class="form-control" id="uname" placeholder="Username" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="pass" placeholder="Password" autocomplete="off">
+                    </div>
+                    <div class="d-flex justify-content-center my-4">
+                        <button type="submit" class="btn btn-primary form-button">Submit</button>
+                    </div><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

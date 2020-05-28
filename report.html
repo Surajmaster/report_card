@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <script>
+        function get_report() {
+            var name = document.getElementById("name").value;
+            var cla = document.getElementById("class").value;
+            var web = parseInt(document.getElementById("web").value);
+            var com = parseInt(document.getElementById("com").value);
+            var ai = parseInt(document.getElementById("ai").value);
+            var os = parseInt(document.getElementById("os").value);
+            var dc = parseInt(document.getElementById("dc").value);
+            var mnm = parseInt(document.getElementById("mnm").value);
+            var avg = 0;
+            var total = 0;
+
+            if (name == "" || cla == "") {
+                alert("Field should not be empty");
+                return false;
+            }
+
+            else {
+                true;
+            }
+
+            avg = (web + com + ai + os + dc + mnm) / 6;
+            total = (web + com + ai + os + dc + mnm);
+
+            var result = "";
+            var grade = "";
+
+            switch (
+            (avg > 60 && avg <= 100) ? 1 :
+                (avg > 50 && avg < 60) ? 2 :
+                    (avg > 40 && avg < 50) ? 3 : 0
+            ) {
+                case 1: grade = "A"; result = "First Class"; break;
+                case 2: grade = "B"; result = "Second Class"; break;
+                case 3: grade = "C"; result = "Third Class"; break;
+                case 0: grade = "D"; result = "Fail"; break;
+
+            }
+            document.getElementById("name1").innerHTML = name;
+            document.getElementById("class1").innerHTML = cla;
+            document.getElementById("tm").innerHTML = total;
+            document.getElementById("am").innerHTML = avg;
+            document.getElementById("grade").innerHTML = grade;
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+
+</head>
+
+<body id="target">
+
+    <div class="container col-lg-4 col-md-4 offset-lg-4 offset-md-4 my-4" style="background-color:rgb(209, 223, 151) ;">
+        <br>
+        <h2>Enter the Following Details:</h2><br>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" autocomplete="off"><br>
+        <input type="text" class="form-control" id="class" placeholder="Enter the class" autocomplete="off"><br>
+        Web Technology &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="web"
+            autocomplete="off"><br><br>
+        Compiler Desigh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="com"
+            autocomplete="off"> <br><br>
+        Artificial Intelligence &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="ai" autocomplete="off"><br><br>
+        Operating System &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="os"
+            autocomplete="off"><br><br>
+        Data Communication &nbsp;&nbsp;<input type="text" id="dc" autocomplete="off"><br><br>
+        Microprocessor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="mnm"
+            autocomplete="off"><br><br>
+        <form action="#">
+            <div class="d-flex justify-content-center">
+                <button onclick="return get_report()" type="submit" class="btn btn-primary form-button">Generate your
+                    report
+                    card</button>
+            </div>
+            <p class="float-right"><a class="gotopbtn" href="#bottom">move down</a>
+            <div id="bottom"><a href="bottom"></a></div>
+            </p>
+        </form><br>
+        <hr>
+        <div class="container" style="font-size: 20px;">
+            <h2 style="color: black;" >Your Report Card:</h2>
+            <strong>Name:</strong> <span id="name1"></span><br>
+            <strong>Class:</strong> <span id="class1"></span><br>
+            <strong>Total Marks:</strong> <span id="tm"></span><br>
+            <strong>Average Marks:</strong> <span id="am"></span><br>
+            <strong>Grade:</strong> <span id="grade"></span><br>
+            <strong>Result:</strong> <span id="result"></span><br><br>
+            <!-- <form onclick="return passvalue()" action="#"> -->
+            <div class="d-flex justify-content-center">
+                <button type="submit" id="cmd" class="btn btn-primary form-button">Download(.pdf)
+                </button>
+            </div>
+        </div><br>
+    </div>
+
+</body>
+
+</html>
